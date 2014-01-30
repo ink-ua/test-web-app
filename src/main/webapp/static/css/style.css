@@ -1,0 +1,60 @@
+@CHARSET "UTF-8";
+
+body {
+	text-align: center;
+}
+body > h2 {
+	display: block;
+	font-style: italic;
+}
+
+h2 + form {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	width: 400px;
+}
+input {
+	height: 30px;
+}
+input[type='text'], input[type='password'] {
+	width: 100%;
+	margin-bottom: 20px;
+	display: block;
+}
+fieldset {
+	border-width: 0;
+	display: block;
+}
+fieldset > input[type='submit'] {
+  		float: left;
+}
+fieldset > a {
+    float: right;
+    line-height: 30px;
+}
+:invalid {
+	border-color:#f00;
+}
+.errorblock {
+	text-align: left;
+	color: #000;
+	background-color: #fff5f5;
+	border: 2px solid #ee0000;
+	padding: 1px;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-left: auto;
+	margin-bottom: 2px;
+	width: 100%;
+}
+
+ul {
+	padding: 0px;
+}
+li {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}

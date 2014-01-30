@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd"
+	default-lazy-init="true">
+	
+	<!-- DAO and services -->
+	<context:annotation-config />
+	<context:component-scan base-package="ua.pp.constantine.testtask.persistence.impl" />
+	
+	<!-- Transactions -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="namingStrategy" class="org.hibernate.cfg.ImprovedNamingStrategy" />
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/jdbc.properties"/>
+	</bean>
+	
+	<!-- data source -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.databaseurl}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!-- Session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="namingStrategy" ref="namingStrategy" />
+		<property name="annotatedClasses">
+			<list>
+				<value>ua.pp.constantine.testtask.persistence.model.User</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>
