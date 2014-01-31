@@ -5,7 +5,7 @@ Test web application task featuring Spring (MVC, Security), Hibernate, Maven
 
 This project is a test task I developed for the job application some time ago. Still, it's a reference example of how to use a bunch of libs/frameworks/tools.
 
-Running test-web-app.
+Running test-web-app:
 
 0. Make sure you have JDK 7 and Maven 3
 
@@ -14,11 +14,7 @@ We have used H2 database in our project, since it is available as maven artifact
 
 2. To modify Jetty settings edit jetty.xml (Optional)
 
-3. Build and run application executing
+3. Build and run application executing `mvn jetty:run-war`.
+The application should be available on [link](http://127.0.0.1:8181/test-web-app).
 
-mvn jetty:run-war
-
-The application should be available on
-http://127.0.0.1:8181/test-web-app
-
-4. To stop application just use Ctrl+C
+4. To stop application just use `Ctrl+C`
