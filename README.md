@@ -7,7 +7,7 @@ This project is a test task I developed for the job application some time ago. S
 
 Running test-web-app.
 
-0. Make sure you have JDK 6 and Maven 3
+0. Make sure you have JDK 7 and Maven 3
 
 1. In order to set up database settings please modify file jdbc.properties or leave as it is, if acceptable.
 We have used H2 database in our project, since it is available as maven artifact, however you are free to use any JDBC database. If you want to use another DBMS, please make sure that JDBC driver is present in the classpath.
